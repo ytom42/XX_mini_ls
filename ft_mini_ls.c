@@ -6,7 +6,7 @@
 /*   By: ytomiyos <ytomiyos@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/04 10:54:55 by ytomiyos          #+#    #+#             */
-/*   Updated: 2020/12/04 21:12:32 by ytomiyos         ###   ########.fr       */
+/*   Updated: 2020/12/04 21:29:34 by ytomiyos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,33 +34,26 @@ t_file	*ft_sort(t_file *lst, t_file *new)
 
 	if (lst == NULL)
 		return (new);
-	if ((check(lst, new)))
-	{
-		new->next = lst;
-		return (new);
-	}
 	first = lst;
-	back = lst;
-	lst = lst->next;
+	back = NULL;
 	while (lst)
 	{
 		if ((check(lst, new)))
 		{
-			back->next = new;
 			new->next = lst;
-			return (first);
+			if (back == NULL)
+				return (new);
+			else
+			{
+				back->next = new;
+				return (first);
+			}
 		}
 		back = lst;
 		lst = lst->next;
 	}
 	back->next = new;
 	return (first);
-}
-
-void	ft_putname(t_file *lst)
-{
-	write(1, lst->name, lst->len);
-	write(1, "\n", 1);
 }
 
 int		main(void)
@@ -83,7 +76,8 @@ int		main(void)
 	}
 	while (lst)
 	{
-		ft_putname(lst);
+		write(1, lst->name, lst->len);
+		write(1, "\n", 1);
 		ptr = lst;
 		lst = lst->next;
 		free(ptr);

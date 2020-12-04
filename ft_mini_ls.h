@@ -6,12 +6,12 @@
 /*   By: ytomiyos <ytomiyos@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/04 10:54:53 by ytomiyos          #+#    #+#             */
-/*   Updated: 2020/12/04 20:17:47 by ytomiyos         ###   ########.fr       */
+/*   Updated: 2020/12/04 21:14:21 by ytomiyos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_MINI_LS_H 
-# define FT_MINI_LS_H 
+#ifndef FT_MINI_LS_H
+# define FT_MINI_LS_H
 
 # include <unistd.h>
 # include <stdlib.h>
