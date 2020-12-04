@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_mini_ls.h                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ytomiyos <ytomiyos@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/12/04 10:54:53 by ytomiyos          #+#    #+#             */
+/*   Updated: 2020/12/04 10:56:00 by ytomiyos         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
 #include <stdlib.h>
 #include <dirent.h>
@@ -7,10 +19,10 @@
 
 typedef struct		s_file
 {
-	char name[1024];
-	int len;
-	long sec;
-	long nsec;
+	char			name[1024];
+	int				len;
+	long			sec;
+	long			nsec;
 	struct s_file	*next;
 }					t_file;
 

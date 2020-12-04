@@ -1,12 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_mini_ls.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ytomiyos <ytomiyos@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/12/04 10:54:55 by ytomiyos          #+#    #+#             */
+/*   Updated: 2020/12/04 10:56:28 by ytomiyos         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_mini_ls.h"
 
 int main()
 {
-	DIR *dir;
-	struct dirent *dent;
-	struct stat buf;
-	t_file *ptr;
-	t_file *lst;
+	DIR				*dir;
+	struct dirent	*dent;
+	struct stat		buf;
+	t_file			*ptr;
+	t_file			*lst;
 
 	lst = NULL;
 	dir = opendir("./");

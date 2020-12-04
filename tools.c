@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   tools.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ytomiyos <ytomiyos@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/12/04 10:54:49 by ytomiyos          #+#    #+#             */
+/*   Updated: 2020/12/04 10:56:55 by ytomiyos         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_mini_ls.h"
 
-int ft_strlen(char *str)
+int		ft_strlen(char *str)
 {
 	int i;
 
@@ -12,7 +24,7 @@ int ft_strlen(char *str)
 	return (i);
 }
 
-void ft_strlcpy(char *dst, char *src, int size)
+void	ft_strlcpy(char *dst, char *src, int size)
 {
 	int i;
 
@@ -25,7 +37,7 @@ void ft_strlcpy(char *dst, char *src, int size)
 	dst[i] = '\0';
 }
 
-char *ft_strdup(char *str)
+char	*ft_strdup(char *str)
 {
 	int len;
 	char *ptr;
@@ -36,7 +48,7 @@ char *ft_strdup(char *str)
 	return (ptr);
 }
 
-int check(t_file *lst, t_file *new)
+int		check(t_file *lst, t_file *new)
 {
 	if (lst->sec == new->sec)
 	{
