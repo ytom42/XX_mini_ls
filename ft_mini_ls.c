@@ -6,7 +6,7 @@
 /*   By: ytomiyos <ytomiyos@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/04 10:54:55 by ytomiyos          #+#    #+#             */
-/*   Updated: 2020/12/04 21:29:34 by ytomiyos         ###   ########.fr       */
+/*   Updated: 2020/12/04 22:11:36 by ytomiyos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,14 +56,32 @@ t_file	*ft_sort(t_file *lst, t_file *new)
 	return (first);
 }
 
-int		main(void)
+t_file	*put_list(t_file *lst)
+{
+	t_file *tmp;
+
+	write(1, lst->name, lst->len);
+	write(1, "\n", 1);
+	tmp = lst;
+	lst = lst->next;
+	free(tmp);
+	return (lst);
+}
+
+int		main(int ac, char **av)
 {
 	DIR				*dir;
-	struct dirent	*dent;
-	struct stat		buf;
 	t_file			*ptr;
 	t_file			*lst;
+	struct dirent	*dent;
+	struct stat		buf;
 
+	if (ac != 1)
+	{
+		perror("Command line arguments are not allowed.\n");
+		return (0);
+	}
+	av = NULL;
 	lst = NULL;
 	dir = opendir("./");
 	while ((dent = readdir(dir)) != NULL)
@@ -75,12 +93,6 @@ int		main(void)
 		lst = ft_sort(lst, ptr);
 	}
 	while (lst)
-	{
-		write(1, lst->name, lst->len);
-		write(1, "\n", 1);
-		ptr = lst;
-		lst = lst->next;
-		free(ptr);
-	}
+		lst = put_list(lst);
 	closedir(dir);
 }

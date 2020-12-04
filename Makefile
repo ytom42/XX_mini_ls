@@ -6,7 +6,6 @@ SRCS	=	ft_mini_ls.c \
 OBJS	=	$(SRCS:.c=.o)
 
 all			: $(NAME)
-			./$(NAME)
 
 $(NAME)		: $(OBJS)
 			$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
