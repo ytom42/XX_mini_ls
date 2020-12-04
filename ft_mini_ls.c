@@ -6,13 +6,58 @@
 /*   By: ytomiyos <ytomiyos@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/04 10:54:55 by ytomiyos          #+#    #+#             */
-/*   Updated: 2020/12/04 10:56:28 by ytomiyos         ###   ########.fr       */
+/*   Updated: 2020/12/04 19:22:02 by ytomiyos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_mini_ls.h"
 
-int main()
+t_file	*ft_lstnew(char *name, int len, struct stat *buf)
+{
+	t_file *ptr;
+
+	ptr = malloc(sizeof(t_file));
+	if (!ptr)
+		return (NULL);
+	ft_strlcpy(ptr->name, name, len);
+	ptr->len = len;
+	ptr->sec = buf->st_mtimespec.tv_sec;
+	ptr->nsec = buf->st_mtimespec.tv_nsec;
+	ptr->next = NULL;
+	return (ptr);
+}
+
+t_file	*ft_sort(t_file *lst, t_file *new)
+{
+	t_file *first;
+	t_file *back;
+
+	if (lst == NULL)
+		return (new);
+	if ((check(lst, new)))
+	{
+		new->next = lst;
+		return (new);
+	}
+	first = lst;
+	back = lst;
+	lst = lst->next;
+	while (lst)
+	{
+		if ((check(lst, new)))
+		{
+			back->next = new;
+			new->next = lst;
+			return (first);
+		}
+		back = lst;
+		lst = lst->next;
+	}
+	back->next = new;
+	return (first);
+}
+
+int		main(void)
 {
 	DIR				*dir;
 	struct dirent	*dent;
