@@ -6,7 +6,7 @@
 /*   By: ytomiyos <ytomiyos@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/04 10:54:55 by ytomiyos          #+#    #+#             */
-/*   Updated: 2020/12/04 19:22:02 by ytomiyos         ###   ########.fr       */
+/*   Updated: 2020/12/04 21:12:32 by ytomiyos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,12 @@ t_file	*ft_sort(t_file *lst, t_file *new)
 	return (first);
 }
 
+void	ft_putname(t_file *lst)
+{
+	write(1, lst->name, lst->len);
+	write(1, "\n", 1);
+}
+
 int		main(void)
 {
 	DIR				*dir;
@@ -77,11 +83,10 @@ int		main(void)
 	}
 	while (lst)
 	{
-		write(1, lst->name, lst->len);
-		write(1, "\n", 1);
+		ft_putname(lst);
 		ptr = lst;
 		lst = lst->next;
+		free(ptr);
 	}
 	closedir(dir);
-	free(ptr);
 }
