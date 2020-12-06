@@ -6,7 +6,7 @@
 /*   By: ytomiyos <ytomiyos@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/04 10:54:55 by ytomiyos          #+#    #+#             */
-/*   Updated: 2020/12/04 22:11:36 by ytomiyos         ###   ########.fr       */
+/*   Updated: 2020/12/06 15:16:20 by ytomiyos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,8 @@ int		main(int ac, char **av)
 
 	if (ac != 1)
 	{
-		perror("Command line arguments are not allowed.\n");
-		return (0);
+		write(1, "Command line arguments are not allowed.\n", 41);
+		return (1);
 	}
 	av = NULL;
 	lst = NULL;
@@ -95,4 +95,5 @@ int		main(int ac, char **av)
 	while (lst)
 		lst = put_list(lst);
 	closedir(dir);
+	return (0);
 }
